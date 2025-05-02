@@ -238,5 +238,6 @@ Pair * nextTreeMap(TreeMap * tree) {
     }
     tree->current = father;
 
+    if(father == NULL) return NULL;
     return father->pair;
 }
