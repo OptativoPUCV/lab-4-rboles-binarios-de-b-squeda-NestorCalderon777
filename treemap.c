@@ -186,7 +186,7 @@ Pair * firstTreeMap(TreeMap * tree) {
     if(tree == NULL) return NULL;
 
     TreeNode* minNode = minimum(tree->root);
-    tree->current = minimum;
+    tree->current = minNode;
 
     return minNode->pair;
 }
