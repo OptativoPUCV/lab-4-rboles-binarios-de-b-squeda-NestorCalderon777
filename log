@@ -16,3 +16,26 @@ Thu, May  1, 2025  7:54:29 PM:
  tests:  11|6
 total_score: 15/70
 505d4e3
+Thu, May  1, 2025  8:01:22 PM: 
+ treemap.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+Compilation failed
+In file included from test.c:4:0:
+treemap.c: In function 'insertTreeMap':
+treemap.c:55:29: error: 'return' with a value, in function returning void [-Werror]
+     if(tree == NULL) return NULL;
+                             ^~~~
+treemap.c:54:6: note: declared here
+ void insertTreeMap(TreeMap * tree, void* key, void * value) {
+      ^~~~~~~~~~~~~
+treemap.c:57:21: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
+     TreeMap* root = tree->root;
+                     ^~~~
+treemap.c:60:14: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
+         root = createTreeNode(key, value);
+              ^
+treemap.c:61:23: error: assignment from incompatible pointer type [-Werror=incompatible-pointer-types]
+         tree->current = root;
+                       ^
+cc1.exe: all warnings being treated as errors
+adbbe73
