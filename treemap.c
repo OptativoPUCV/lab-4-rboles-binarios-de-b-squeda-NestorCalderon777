@@ -178,6 +178,15 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 
 
 Pair * upperBound(TreeMap * tree, void* key) {
+    return NULL;
+   
+}
+
+Pair * firstTreeMap(TreeMap * tree) {
+    return NULL;
+}
+
+Pair * nextTreeMap(TreeMap * tree) {
     if(tree == NULL || tree->current == NULL) return NULL;
 
     TreeNode* current = tree->current;
@@ -197,12 +206,4 @@ Pair * upperBound(TreeMap * tree, void* key) {
     tree->current = father;
 
     return father->pair;
-}
-
-Pair * firstTreeMap(TreeMap * tree) {
-    return NULL;
-}
-
-Pair * nextTreeMap(TreeMap * tree) {
-    return NULL;
 }
