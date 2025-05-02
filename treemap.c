@@ -203,7 +203,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
     }
 
     if(candidate == NULL) return NULL;
-    
+
     tree->current = candidate;
     return candidate->pair;
    
@@ -226,6 +226,7 @@ Pair * nextTreeMap(TreeMap * tree) {
     //case 1 --> tiene hijo derecho
     if(current->right != NULL){
         TreeNode* next = minimum(current->right);
+        tree->current = next;
         return next->pair;
     }
 
