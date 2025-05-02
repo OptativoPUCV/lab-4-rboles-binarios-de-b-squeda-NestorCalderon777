@@ -89,9 +89,6 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 }
 
 TreeNode * minimum(TreeNode * x){
-
-    if(x == NULL) return NULL;
-    
     while(x->left != NULL){
         x = x->left;
     }
@@ -101,6 +98,50 @@ TreeNode * minimum(TreeNode * x){
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
+    if(node == NULL) return;
+
+    //case 1 --> sin hijos
+    if(node->left == NULL && node->right == NULL){
+        if(node->parent == NULL){
+            tree->root = NULL;
+
+        } else if(node->parent->left == node){
+            node->parent->left == NULL;
+        } else{
+            node->parent->right == NULL;
+        }
+        free(node->pair);
+        free(node);
+        return;
+    }
+
+    //case 2 --> un solo hijo
+    if(node->left == NULL || node->right == NULL){
+        TreeNode* hijo = (node->left != NULL) ? node->left : node->right;
+
+        if(node->parent == NULL){
+            tree->root = hijo; 
+        } else if(node->parent->left == node){
+            node->parent->left = hijo;
+        } else{
+            node->parent->right = hijo;
+        }
+        hijo->parent = node->parent;
+
+        free(node->pair);
+        free(node);
+        return;
+    }
+
+    //case 3 --> 2 hijos
+    TreeNode* minNode = minimum(node->right); //sucesor in-order
+
+    //copia de los datos del sucesor al current
+    node->pair->key = minNode->pair->key;
+    node->pair->value = minNode->pair->value;
+
+    //elimina el nodo minimo del subarbol derecho
+    removeNode(tree, minNode);
 
 }
 
