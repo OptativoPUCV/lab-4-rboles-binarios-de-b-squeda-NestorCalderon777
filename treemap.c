@@ -178,7 +178,25 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 
 
 Pair * upperBound(TreeMap * tree, void* key) {
-    return NULL;
+    if(tree == NULL || tree->current == NULL) return NULL;
+
+    TreeNode* current = tree->current;
+
+    //case 1 --> tiene hijo derecho
+    if(current->right != NULL){
+        TreeNode* next = minimum(current->right);
+        return next->pair;
+    }
+
+    //case 2 --> encontrar la raiz
+    TreeNode* father = current->parent;
+    while(father != NULL && current == father->right){
+        current = father;
+        father = father->parent;
+    }
+    tree->current = father;
+
+    return father->pair;
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
