@@ -201,6 +201,9 @@ Pair * upperBound(TreeMap * tree, void* key) {
             current = current->right;
         }
     }
+
+    if(candidate == NULL) return NULL;
+    
     tree->current = candidate;
     return candidate->pair;
    
